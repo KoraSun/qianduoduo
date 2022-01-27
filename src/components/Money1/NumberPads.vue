@@ -1,32 +1,53 @@
 <template>
     <div class="numberPad">
-        <div class="output">100</div>
+        <div class="output">{{output ||'0'}}
+        </div>
+        
         <div class="buttons">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
+            <button @click="inputContent">1</button>
+            <button @click="inputContent">2</button>
+            <button @click="inputContent">3</button>
             <button>+</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
+            <button @click="inputContent">4</button>
+            <button @click="inputContent">5</button>
+            <button @click="inputContent">6</button>
             <button>-</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>*</button>
-            <button class="ok">OK</button>
-            <button>0</button>
-            <button class="zero">清空</button>
+            <button @click="inputContent">7</button>
+            <button @click="inputContent">8</button>
+            <button @click="inputContent">9</button>
             <button>÷</button>
+            <button class="ok">OK</button>
+            <button @click="inputContent">0</button>
+            <button class="zero">清空</button>
+            <button @click="inputContent">.</button>
             
 
         </div>
     </div>
 </template>
 
-<script>
-    export default {
-        name:"NumberPad"
+<script lang="ts">
+    import Vue from 'vue';
+    import {Component} from 'vue-property-decorator';
+    @Component
+    export default class NumberPad extends Vue{
+        output:string ='0';
+        inputContent(event:MouseEvent){
+            const button= (event.target as HTMLButtonElement);
+            const input = button.textContent!;
+            if(this.output === '0'){
+                if(input === '0'){
+                    return;
+                }else if('123456789'.indexOf(input)>=0){
+                    this.output = input;
+                    return;
+                }
+            }else{
+                this.output += button.textContent
+            }
+                
+        };
+       
     }
 </script>
 
