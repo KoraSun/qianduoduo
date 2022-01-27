@@ -32,6 +32,7 @@
     export default class NumberPad extends Vue{
         output:string ='0';
         formula:string='0';
+        result:number=0;
         inputContent(event:MouseEvent){
             const button= (event.target as HTMLButtonElement);
             const input = button.textContent !;
@@ -59,7 +60,8 @@
             this.output='0'
         }
         ok(){
-            this.output=(eval(this.formula)).toString()
+            this.result=eval(this.formula)
+            this.output=(this.result).toString()
             
         }
   }
