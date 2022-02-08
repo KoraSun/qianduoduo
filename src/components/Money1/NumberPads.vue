@@ -63,6 +63,8 @@
             this.result=eval(this.formula)
             this.output=(this.result).toString()
             this.$emit('update:value',this.output)
+            this.$emit('submit',this.output)
+            this.output='0'
             
         }
   }
