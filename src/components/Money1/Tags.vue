@@ -1,26 +1,43 @@
 <template>
    <div class= tags>
         <div class="new">
-            <button>新增</button>
+            <button @click="create">新增</button>
         </div>    
         <ul class="current">
-            <li>三餐</li>
-            <li>零食</li>
-            <li>衣服</li>
-            <li>交通</li>
-            <li>学习</li>
-            <li>住房</li>
-            <li>美妆</li>
-            <li>医疗</li>
-            <li>运动</li>
+            <li v-for="tag in dataSource" :key="tag"
+            :class="{selected:selectedTags.indexOf(tag)>=0}"
+            @click="toggle(tag)"
+            >{{tag}}</li>
         </ul>  
     </div>
 </template>
 
-<script>
-    export default {
-        name:'Tags'
-        
+<script lang="ts">
+    import Vue from 'vue'
+    import {Component,Prop} from 'vue-property-decorator'
+    @Component
+    export default class Tags extends Vue{
+        @Prop() readonly dataSource: string[] | undefined;
+        selectedTags:string[] = [];
+        toggle(tag:string){
+            const index=this.selectedTags.indexOf(tag)
+            if(index>=0){
+                this.selectedTags.splice(index,1)
+            }else{
+                this.selectedTags.push(tag)
+            } 
+            this.$emit('update:value',this.selectedTags)   
+        }
+        create(){
+            const name =window.prompt('请输入标签名')
+            if (name ===''){
+                window.alert('标签名不能为空')
+            }else if(this.dataSource){
+                this.$emit('update:dataSource',
+                 [...this.dataSource,name]);
+            }
+            
+        }
     }
 </script>
 
@@ -35,7 +52,8 @@
       display:flex;
       flex-wrap: wrap;
       > li{
-          background: rgb(161, 200, 245);
+          $bg:rgb(161, 200, 245);
+          background: $bg;
           $h:30px;
           height:$h;
           border-radius: $h/2;
@@ -43,6 +61,11 @@
           margin-left: 7px;
           margin-right:7px;
           margin-top:12px;
+          &.selected{
+              background: darken($bg, 15%);
+              color:white
+
+          }
           
       }
   }
