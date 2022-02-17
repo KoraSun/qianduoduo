@@ -8,7 +8,9 @@
                @update:value="onUpdateNotes"/>
         </div>  
         <Tags /> 
-        <Types :value.sync="record.type" /> 
+        <Tabs :data-source="typeList"
+              :value.sync="record.type"/>
+        
     </Layout>   
 </template>
 
@@ -19,23 +21,27 @@ import Tags from "@/components/Money1/Tags.vue";
 import FormItem from "@/components/Money1/FormItem.vue";
 import Types from "@/components/Money1/Types.vue";
 import NumberPad from "@/components/Money1/NumberPads.vue";
+import Tabs from '@/components/Tabs1.vue'
+import typeList from '@/constants/typeList';
 
 
 @Component({
-     components: {Tags,FormItem,Types,NumberPad},
+     components: {Tags,FormItem,Types,NumberPad,Tabs},
 })
 export default class Money extends Vue{
   get recordList(){
       return this.$store.state.recordList;
 
   }  
+  typeList=typeList;
+
   
   record: RecordItem={
       tags:[],notes:'',type:'-',amount:0,
   }; 
   created(){
       this.$store.commit('fetchRecords')
-  }
+  };
   
   onUpdateNotes(value:string){
   };
