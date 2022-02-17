@@ -9,15 +9,14 @@
 </template>
 
 <script lang='ts'>
-import Layout from '@/components/Layout.vue'
-import Types from '@/components/Money1/Types.vue'
+import Layout from '@/components/Layout.vue';
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator'
 import Tabs from '@/components/Tabs1.vue';
 import intervalList from '@/constants/intervalList';
 import typeList from '@/constants/typeList'
     @Component({
-        components: { Layout,Types,Tabs},
+        components: { Layout,Tabs},
 
     })
     export default class Statistics extends Vue{
