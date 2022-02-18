@@ -2,7 +2,7 @@
 <template>
     <Layout class-prefix="layout"> 
         <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />
-        <div class="notes">
+        <div class="notesOfMoney">
             <FormItem field-name="备注" 
                placeholder="在这里输入备注"
                @update:value="onUpdateNotes"/>
@@ -43,6 +43,7 @@ export default class Money extends Vue{
   };
   
   onUpdateNotes(value:string){
+      this.record.notes=value;
   };
  
   onUpdateAmount(value:string){
@@ -61,7 +62,7 @@ export default class Money extends Vue{
         display: flex;
         flex-direction: column-reverse;
   }
-    .notes{
+    .notesOfMoney{
         padding:12px 0;
     }
 </style>
