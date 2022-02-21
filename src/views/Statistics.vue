@@ -55,7 +55,8 @@ import clone from '@/lib/clone'
         }
             
         tagString(tags:Tag[]){
-            return tags.length===0?'无':tags.join(',');
+            return tags.length===0?'无':
+            tags.map(t=>t.name).join(',');
 
         }
 
