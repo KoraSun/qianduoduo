@@ -7,17 +7,13 @@ import router from '@/router/index'
 Vue.use(Vuex)
 
 
-type RootState={
-  recordList: RecordItem[],
-  tagList:Tag[],
-  currentTag?:Tag,
-
-}
 const store = new Vuex.Store({
   state: {
     recordList:[] ,
     tagList:[],
     currentTag:undefined,
+    createTagError:null,
+    createRecordError:null,
   }as RootState,
 
   mutations: {
@@ -72,8 +68,15 @@ const store = new Vuex.Store({
     },
     fetchTags(state){
       state.tagList=JSON.parse(window.localStorage.getItem('tagList') ||'[]') ;
+      if(!state.tagList||state.tagList.length===0){
+      store.commit('createTag','三餐');
+      store.commit('createTag','运动');
+      store.commit('createTag','交通');
+      store.commit('createTag','学习');
+      }
     },
     createTag(state,name:string){
+      state.createTagError =null;
       const names =state.tagList.map(item => item.name)
       if(names.indexOf(name)>=0){
           window.alert('标签重复');
