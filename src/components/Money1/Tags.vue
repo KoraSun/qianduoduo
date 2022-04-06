@@ -7,7 +7,11 @@
             <li v-for="tag in tagList" :key="tag.id"
             :class="{selected:selectedTags.indexOf(tag)>=0}"
             @click="toggle(tag)"
-            >{{tag.name}}</li>
+            >{{tag.name}}
+            <Icon :name="tag.id" class="icon" v-if="tag.id<12" />
+            <Icon name="0" v-else/>
+            </li>
+            
         </ul>  
     </div>
 </template>
@@ -37,6 +41,10 @@
             } 
             this.$emit('update:value',this.selectedTags)   
         }
+        setup(){
+            
+
+        }
     }
 </script>
 
@@ -51,20 +59,35 @@
       display:flex;
       flex-wrap: wrap;
       > li{
+          display: flex;
+          flex-direction: column-reverse;
           $bg:rgb(161, 200, 245);
-          background: $bg;
-          $h:30px;
+         /*  background: $bg; */
+          $h:60px;
           height:$h;
-          border-radius: $h/2;
-          padding:4px 12px;
+          text-align: center;
+          /* border-radius: $h/2; */
+          padding:4px 10px;
           margin-left: 7px;
           margin-right:7px;
           margin-top:12px;
+          border: 1px solid transparent;
           &.selected{
-              background: darken($bg, 15%);
-              color:white
+              border: 1px solid #a1c8f3;
+          }
+          > .icon{
+              position: relative;
+              text-align: center;
+              height: 35px;
+              width: 35px;
+              /* background-color:#a1c8f3; */
+              border-radius: 50%;
+             /*  margin-left:1px; */
+              color:$bg;
+              
 
           }
+          
           
       }
   }
