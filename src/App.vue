@@ -25,7 +25,17 @@ body{
   -moz-osx-font-smoothing: grayscale;
   color: #333;
   background:#f5f5f5;
+  overflow:scroll; 
+  overflow-y:hidden;
+  overflow-x:hidden;
+
+ 
 }
+#app{
+  max-width: 480px;
+  margin: 0 auto;
+}
+
 
 
 </style>

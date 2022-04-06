@@ -49,7 +49,7 @@ import { Component,Prop } from "vue-property-decorator";
       font-size: 24px;
       &-item{
           width:50%;
-          height:64px;
+          height:58px;
           display: flex;
           justify-content: center;
           align-items: center;

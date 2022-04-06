@@ -55,6 +55,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column-reverse;
+    overflow: auto;
   > .current{
       display:flex;
       flex-wrap: wrap;

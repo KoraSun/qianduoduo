@@ -29,7 +29,6 @@
 <style lang="scss" scoped>
  .formItem{
       font-size: 14px;
-      
       padding-left: 16px;
       display: flex;
       align-items:center;

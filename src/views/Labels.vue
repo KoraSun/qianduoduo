@@ -1,6 +1,10 @@
 <template>
     <div>
         <Layout>
+            <div class="tabs">
+                <Icon name ="Labels" />
+                标签
+            </div>
             <div class="tags">
                 <router-link class="tag"
                    v-for="tag in tags" :key ="tag.id"
@@ -42,6 +46,17 @@
 </script>
 
 <style lang="scss" scoped>
+  .tabs{
+      background:white;
+      display: flex;
+      text-align: center;
+      justify-content:  center;
+      font-size: 24px;
+      height: 58px;
+      align-items: center;
+      position: relative;
+      border-bottom: 3px solid #76b7f1;
+  }
   .tags{
       background:white;
       font-size: 16px; 
