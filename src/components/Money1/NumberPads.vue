@@ -1,8 +1,6 @@
 <template>
     <div class="numberPad">
-        <div class="output" >{{output || 0}}
-        </div>
-        
+        <div class="output" >{{output || 0}} </div>
         <div class="buttons">
             <button @click="inputContent">1</button>
             <button @click="inputContent">2</button>
@@ -40,11 +38,13 @@
             if(this.output === '0'){
               if('0123456789'.indexOf(input)>=0){
                   this.output = input;
+                  this.formula=this.output   
               }else{
                 this.output += input;
               }
               return;     
             }if(this.output.indexOf('.')>=0 && input==='.'){return;}
+            
             this.output+=input;
             this.formula=this.output
             
