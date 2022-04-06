@@ -80,6 +80,11 @@ const store = new Vuex.Store({
       store.commit('createTag','日用');
       store.commit('createTag','娱乐');
       store.commit('createTag','咖啡');
+      store.commit('createTag','奶茶');
+      store.commit('createTag','礼物');
+      store.commit('createTag','乐器');
+      store.commit('createTag','买菜');
+      store.commit('createTag','游戏');
       }
     },
     createTag(state,name:string){

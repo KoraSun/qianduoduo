@@ -8,7 +8,7 @@
             :class="{selected:selectedTags.indexOf(tag)>=0}"
             @click="toggle(tag)"
             >{{tag.name}}
-            <Icon :name="tag.id" class="icon" v-if="tag.id<12" />
+            <Icon :name="tag.id" class="icon" v-if="tag.id<17" />
             <Icon name="0" v-else/>
             </li>
             
